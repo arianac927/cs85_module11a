@@ -14,7 +14,19 @@
             <td>{{ $day['day'] }}</td>
             <td>{{ $day['high'] }}°F</td>
             <td>{{ $day['low'] }}°F</td>
-            <td>{{ $day['condition'] }}</td>
+            <td>
+                @if ($day['condition'] === 'Rain')
+                <span style="color: blue; font-weight: bold;">
+                {{ $day['condition'] }}
+                </span>
+                @elseif ($day['condition'] === 'Sunny')
+                <span style="color: orangered; font-weight: bold;">
+                {{ $day['condition'] }}
+                </span>
+                @else
+                {{ $day['condition'] }}
+                @endif
+            </td>
         </tr>
         @endforeach
     </tbody>
